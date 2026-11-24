@@ -1,0 +1,120 @@
+# 📈 Retail Sales Analytics, Statistical Modeling & Interactive Dashboard
+
+![Microsoft Excel](https://img.shields.io/badge/Microsoft_Excel-217346?style=for-the-badge&logo=microsoft-excel&logoColor=white)
+![Data Analysis](https://img.shields.io/badge/Data_Analysis-ToolPak_%26_PivotTables-blue?style=for-the-badge)
+![Status](https://img.shields.io/badge/Status-Completed-brightgreen?style=for-the-badge)
+
+An end-to-end Microsoft Excel business intelligence and statistical analysis project built on a 200-transaction retail dataset. This workbook combines dynamic array formulas, conditional formatting, Pivot Tables, What-If Scenario Manager, Analysis ToolPak (Descriptive Statistics & Linear Regression), and an executive KPI dashboard.
+
+---
+
+## 📑 Table of Contents
+- [Repository Structure](#-repository-structure)
+- [Executive Key Metrics](#-executive-key-metrics)
+- [Workbook Architecture & Sheet Breakdown](#-workbook-architecture--sheet-breakdown)
+  - [1. Project Instructions](#1-project-instructions)
+  - [2. Dataset](#2-dataset)
+  - [3. DashBoard](#3-dashboard)
+  - [4. Pivot\_Table](#4-pivot_table)
+  - [5. Customer Analysis](#5-customer-analysis)
+  - [6. Monthly Analysis](#6-monthly-analysis)
+  - [7. What If\_Regression & Scenario Summary](#7-what-if_regression--scenario-summary)
+  - [8. Actual\_Regression\_Analysis](#8-actual_regression_analysis)
+  - [9. Descriptive Statistics](#9-descriptive-statistics)
+- [Excel Tools & Functions Used](#-excel-tools--functions-used)
+- [How to View & Run](#-how-to-view--run)
+
+---
+
+## 📁 Repository Structure
+
+```text
+├── Project_2_Dashboard_Completed_2.xlsx   # Complete Excel workbook with datasets, statistical models & dashboard
+└── README.md                              # Project documentation and analytical breakdown
+```
+
+---
+
+## 📊 Executive Key Metrics
+
+| Metric | Value | Notes |
+| :--- | :--- | :--- |
+| **Total Transactions** | `200` Orders | Spanning **April 2024 – April 2025** across 4 regions & 5 product categories |
+| **Total Revenue (Sales)** | `$195,217.76` | Mean: `$976.09` \| Median: `$1,008.75` |
+| **Total Profit** | `$82,374.16` | Mean: `$411.87` \| Overall Profit Margin: `~42.2%` |
+| **Top Product Category** | `Clothing` (`$43,530.40`) | Followed by `Electronics` (`$41,532.92`) and `Books` (`$39,340.31`) |
+| **Top Performing Region** | `North` (`$53,270.64`) | Followed by `South` (`$49,540.36`), `West` (`$46,725.56`), and `East` (`$45,681.20`) |
+| **Sales–Profit Correlation ($R^2$)** | `0.598` ($R = 0.773$) | Statistically significant positive relationship ($p = 1.98 \times 10^{-41}$) |
+
+---
+
+## 📋 Workbook Architecture & Sheet Breakdown
+
+### 1. `Project Instructions`
+Outlines the 10 core business intelligence, statistical modeling, and visualization objectives implemented throughout the workbook.
+
+### 2. `Dataset`
+Contains 200 structured retail sales records (`A1:J201`) with fields for `Order ID`, `Order Date`, `Customer Name`, `Region`, `Product` (`Books`, `Clothing`, `Electronics`, `Furniture`, `Office Supplies`), `Quantity`, `Unit Price`, `Sales`, `Profit`, and a dynamic `NOW()` **Timestamp** column (`J2:J201`) tracking workbook execution time.
+
+### 3. `DashBoard`
+An interactive executive summary view bringing together headline KPI cards and three core visualizations:
+- **KPI Summary Cards:** Total Sales (`$195,217.76`), Total Profit (`$82,374.16`), and Total Orders (`200`).
+- **Bar / Column Chart:** Compares Total Sales across `North`, `South`, `East`, and `West` regions.
+- **Line Chart:** Tracks monthly revenue trends from **Apr-24** through **Apr-25**.
+- **Pie Chart:** Visualizes percentage revenue share by product category (`Clothing 22%`, `Electronics 21%`, `Books 20%`, `Furniture 19%`, `Office Supplies 18%`).
+
+### 4. `Pivot_Table`
+Cross-tabulates **Total Sales by Region (Rows) and Product Category (Columns)** (`A3:G10`) with automated row and column grand totals:
+
+| Region | Books | Clothing | Electronics | Furniture | Office Supplies | Grand Total |
+| :--- | :---: | :---: | :---: | :---: | :---: | :---: |
+| **East** | `$7,764.61` | `$11,297.10` | `$8,708.13` | `$9,531.34` | `$8,380.02` | **`$45,681.20`** |
+| **North** | `$11,013.68` | `$13,189.24` | `$10,213.45` | `$7,610.67` | `$11,243.60` | **`$53,270.64`** |
+| **South** | `$11,834.08` | `$8,278.41` | `$11,014.43` | `$10,275.34` | `$8,138.10` | **`$49,540.36`** |
+| **West** | `$8,727.94` | `$10,765.65` | `$11,596.91` | `$9,195.54` | `$6,440.52` | **`$46,725.56`** |
+| **Grand Total** | **`$39,340.31`** | **`$43,530.40`** | **`$41,532.92`** | **`$36,612.89`** | **`$34,202.24`** | **`$195,217.76`** |
+
+### 5. `Customer Analysis`
+Identifies and ranks high-value customers using dynamic array formulas, lookup functions, and conditional formatting:
+- **Customer Aggregations (`A3:D32`):** Uses `UNIQUE`, `SUMIFS`, and `AVERAGEIFS` to compute Total Sales and Average Order Value per customer, paired with **Top 10 Conditional Formatting** highlighting the highest spenders (led by `Customer_18` at `$10,211.79` and `Customer_19` at `$9,713.65`).
+- **Top 10 Leaderboard (`G4:H13`):** Dynamically extracts the top 10 customers using `TAKE`, `SORT`, `INDEX`, and `MATCH`.
+
+### 6. `Monthly Analysis`
+Evaluates month-over-month (MoM) revenue performance from **April 2024** to **April 2025** (`A1:D14`):
+- Computes monthly revenue totals via `SUMIFS` (`B2:B14`).
+- Calculates MoM percentage growth (`=(B3-B2)/B2` in `C3:C14`) paired with **Icon Set Conditional Formatting** (up/down directional arrows) to highlight growth spikes (such as `+74.6%` in Jul-24 and `+50.3%` in Feb-25) and contractions.
+
+### 7. `What If_Regression` & `Scenario Summary`
+Models how promotional discount tiers affect net profitability across the entire dataset:
+- Simulates discount scenarios of **5%**, **10%**, **15%**, and **20%** (`B2` discount driver impacting adjusted profit in `B4`).
+- Summarized via Excel **Scenario Manager** (`Scenario Summary` tab), showing projected net profit decreasing from **`$77,798.88`** at a 5% discount down to **`$52,960.53`** at a 20% discount.
+
+### 8. `Actual_Regression_Analysis`
+Built with the **Analysis ToolPak (Regression)** modeling **Profit ($Y$) vs. Sales ($X$)**:
+- **Multiple $R$:** `0.773` | **$R^2$:** `0.598` | **Adjusted $R^2$:** `0.596` | **Standard Error:** `199.78`
+- **Regression Equation:** $\text{Profit} = -12.66 + 0.435 \times \text{Sales}$ ($p < 0.001$)
+- Includes residual diagnostics, standardized residuals, and a **Line Fit Plot** comparing predicted vs. actual profit.
+
+### 9. `Descriptive Statistics`
+Generated via **Analysis ToolPak (Descriptive Statistics)** across `Sales`, `Profit`, and `Quantity`, reporting Mean, Standard Error, Median, Standard Deviation, Sample Variance, Kurtosis, Skewness, Range, Minimum, Maximum, Sum, and Count ($n = 200$).
+
+---
+
+## 🛠️ Excel Tools & Functions Used
+
+- **Dynamic Array & Lookup Functions:** `UNIQUE`, `SORT`, `TAKE`, `INDEX`, `MATCH`
+- **Conditional Aggregation & Date Functions:** `SUMIFS`, `AVERAGEIFS`, `NOW`
+- **Business Intelligence & Forecasting:** Pivot Tables, What-If Analysis (Scenario Manager)
+- **Statistical Modeling (Analysis ToolPak):** Linear Regression, Descriptive Statistics
+- **Data Visualization & Formatting:** Bar, Line, and Pie Charts; Top-10 Rule & Directional Icon Set Conditional Formatting
+
+---
+
+## 🚀 How to View & Run
+
+1. **Clone or Download** this repository:
+   ```bash
+   git clone https://github.com/<your-username>/<your-repo-name>.git
+   ```
+2. Open **`Project_2_Dashboard_Completed_2.xlsx`** in **Microsoft Excel (Microsoft 365 or Excel 2021+)** to support dynamic array formulas (`UNIQUE`, `SORT`, `TAKE`).
+3. If prompted with a security banner for external/dynamic formulas, click **Enable Editing** and ensure **Formulas → Calculation Options → Automatic** is active.
